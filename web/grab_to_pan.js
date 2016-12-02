@@ -18,6 +18,7 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
+  
     define('pdfjs-web/grab_to_pan', ['exports'], factory);
   } else if (typeof exports !== 'undefined') {
     factory(exports);

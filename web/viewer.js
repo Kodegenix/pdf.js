@@ -91,6 +91,8 @@ function getViewerConfiguration() {
       pageRotateCcwButton: document.getElementById('pageRotateCcw'),
       toggleHandToolButton: document.getElementById('toggleHandTool'),
       documentPropertiesButton: document.getElementById('documentProperties'),
+      onePageViewButton: document.getElementById('onePageView'),
+      multiPageViewButton: document.getElementById('multiPageView'),
     },
     fullscreen: {
       contextFirstPage: document.getElementById('contextFirstPage'),

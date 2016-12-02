@@ -89,7 +89,10 @@ var SecondaryToolbar = (function SecondaryToolbarClosure() {
       { element: options.toggleHandToolButton, eventName: 'togglehandtool',
         close: true },
       { element: options.documentPropertiesButton,
-        eventName: 'documentproperties', close: true }
+        eventName: 'documentproperties', close: true },
+        { element: options.onePageViewButton, eventName: 'onePageView'},
+        { element: options.multiPageViewButton, eventName: 'multiPageView'}
+
     ];
     this.items = {
       firstPage: options.firstPageButton,
