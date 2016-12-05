@@ -73,6 +73,8 @@ function getViewerConfiguration() {
       presentationModeButton: document.getElementById('presentationMode'),
       download: document.getElementById('download'),
       viewBookmark: document.getElementById('viewBookmark'),
+      onePageViewButtonMenu: document.getElementById('onePageViewMenu'),
+      multiPageViewButtonMenu: document.getElementById('multiPageViewMenu'),
     },
     secondaryToolbar: {
       toolbar: document.getElementById('secondaryToolbar'),
