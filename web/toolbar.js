@@ -121,6 +121,14 @@ var Toolbar = (function ToolbarClosure() {
       var self = this;
       var items = this.items;
 
+      items.onePageViewButtonMenu.addEventListener('click', function() {
+        eventBus.dispatch('onePageView');
+      });
+
+      items.multiPageViewButtonMenu.addEventListener('click', function() {
+        eventBus.dispatch('multiPageView');
+      });
+
       items.previous.addEventListener('click', function() {
         eventBus.dispatch('previouspage');
       });

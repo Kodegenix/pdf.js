@@ -14,6 +14,7 @@
         this.container = options.container;
         this.viewer = options.viewer;
         this.eventBus = options.eventBus;
+        this.toolbar = options.toolbar;
     }
 
    
@@ -21,10 +22,14 @@
         onePageView: function () {
             this.viewer.style.cssText = null;
             this.multiPage = false;
+            this.toolbar.multiPageViewButtonMenu.classList.remove('toggled');
+            this.toolbar.onePageViewButtonMenu.classList.add('toggled');
         },
         multiPageView: function () {
             this.multiPage = true;
             this.viewer.style.cssText = "display: flex; flex-direction: row; flex-wrap: wrap";
+            this.toolbar.onePageViewButtonMenu.classList.remove('toggled');
+            this.toolbar.multiPageViewButtonMenu.classList.add('toggled');
         },
         getDivWidth: function(){
             return this.viewer.children[0].clientWidth;

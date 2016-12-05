@@ -284,7 +284,8 @@
       this.multiPageView = new MultiPageView({
         container: container,
         viewer: viewer,
-        eventBus: this.eventBus
+        eventBus: this.eventBus,
+        toolbar: appConfig.toolbar
       })
 
       this.pdfDocumentProperties =
