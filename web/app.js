@@ -1294,11 +1294,13 @@
 
   function toggleOnePageView() {
     PDFViewerApplication.multiPageView.onePageView();
+    PDFViewerApplication.pdfViewer.currentScaleValue = "page-fit";
     PDFViewerApplication.pdfViewer.update();
   }
 
   function toggleMultiPageView() {
     PDFViewerApplication.multiPageView.multiPageView();
+    PDFViewerApplication.pdfViewer.currentScaleValue = "page-fit";
     PDFViewerApplication.pdfViewer.update();
   }
 
