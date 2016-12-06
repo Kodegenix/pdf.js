@@ -15,5 +15,6 @@
   "enhanceTextSelection": false,
   "renderer": "canvas",
   "renderInteractiveForms": false,
-  "disablePageLabels": false
+  "disablePageLabels": false,
+  "multipage": false
 }

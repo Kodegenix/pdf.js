@@ -411,6 +411,13 @@
           self.preferenceDisablePageLabels = value;
         }),
         // TODO move more preferences and other async stuff here
+        Preferences.get('multipage').then(function resolve(value) {
+          if (value === true) {
+            PDFViewerApplication.multiPageView.multiPageView();
+          } else {
+            PDFViewerApplication.multiPageView.onePageView();
+          }
+        })
       ]).catch(function (reason) { });
 
       return initializedPromise.then(function () {
@@ -1294,12 +1301,14 @@
 
   function toggleOnePageView() {
     PDFViewerApplication.multiPageView.onePageView();
+    Preferences.set('multipage', false);
     PDFViewerApplication.pdfViewer.currentScaleValue = "page-fit";
     PDFViewerApplication.pdfViewer.update();
   }
 
   function toggleMultiPageView() {
     PDFViewerApplication.multiPageView.multiPageView();
+    Preferences.set('multipage', true);
     PDFViewerApplication.pdfViewer.currentScaleValue = "page-fit";
     PDFViewerApplication.pdfViewer.update();
   }
