@@ -1,15 +1,14 @@
-
 'use strict';
 
 (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define('pdfjs-web/multi_page_view', ['exports'], factory);
-    } else if (typeof exports !== 'undefined') {
-        factory(exports);
-    } else {
-        factory((root.pdfjsMultiPageView = {}));
-    }
-} (this, function (exports) {
+  if (typeof define === 'function' && define.amd) {
+    define('pdfjs-web/multi_page_view', ['exports'], factory);
+  } else if (typeof exports !== 'undefined') {
+    factory(exports);
+  } else {
+    factory((root.pdfjsWebMultiPageView = {}));
+  }
+}(this, function (exports) {
     function MultiPageView(options) {
         this.container = options.container;
         this.viewer = options.viewer;
@@ -17,7 +16,7 @@
         this.toolbar = options.toolbar;
     }
 
-   
+
     MultiPageView.prototype = {
         onePageView: function () {
             this.viewer.style.cssText = null;
@@ -49,7 +48,7 @@
             return page + this.pagesVisibleCount > pagesCount ? pagesCount : page + this.pagesVisibleCount;
         }
 
-    }
+    };
 
     exports.MultiPageView = MultiPageView;
-}))
+}));
