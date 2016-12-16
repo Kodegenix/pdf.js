@@ -1,7 +1,6 @@
-/* globals PDFJS, expect, it, describe, Promise, beforeAll,
-           InvalidPDFException, MissingPDFException, StreamType, FontType,
-           PDFDocumentProxy, PasswordException, PasswordResponses, afterAll,
-           PDFPageProxy, createPromiseCapability, afterEach */
+/* globals PDFJS, createPromiseCapability, PDFDocumentProxy,
+           InvalidPDFException, MissingPDFException, PasswordResponses,
+           PasswordException, PDFPageProxy, StreamType, FontType */
 
 'use strict';
 
@@ -505,7 +504,7 @@ describe('api', function() {
 
       // PageLabels with bad "Prefix" entries.
       var url3 = new URL('../pdfs/bad-PageLabels.pdf', window.location).href;
-      var loadingTask3 = new PDFJS.getDocument(url3);
+      var loadingTask3 = PDFJS.getDocument(url3);
       var promise3 = loadingTask3.promise.then(function (pdfDoc) {
         return pdfDoc.getPageLabels();
       });
@@ -515,7 +514,7 @@ describe('api', function() {
         expect(pageLabels[0]).toEqual(['i', 'ii', 'iii', '1']);
         expect(pageLabels[1]).toEqual(['Front Page1']);
         expect(pageLabels[2]).toEqual(['1', '2']);
-        expect(pageLabels[3]).toEqual(['X1']);
+        expect(pageLabels[3]).toEqual(['X3']);
 
         loadingTask0.destroy();
         loadingTask1.destroy();

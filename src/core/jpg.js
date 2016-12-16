@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/* eslint-disable no-multi-spaces */
 
 'use strict';
 
@@ -616,7 +617,7 @@ var JpegImage = (function JpegImageClosure() {
           component = frame.components[i];
           var blocksPerLine = Math.ceil(Math.ceil(frame.samplesPerLine / 8) *
                                         component.h / frame.maxH);
-          var blocksPerColumn = Math.ceil(Math.ceil(frame.scanLines  / 8) *
+          var blocksPerColumn = Math.ceil(Math.ceil(frame.scanLines / 8) *
                                           component.v / frame.maxV);
           var blocksPerLineForMcu = mcusPerLine * component.h;
           var blocksPerColumnForMcu = mcusPerColumn * component.v;

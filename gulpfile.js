@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* jshint node:true */
+/* eslint-env node */
 /* globals target */
 
 'use strict';
@@ -197,7 +197,7 @@ function createBundle(defines) {
       case 'mainfile':
         // 'buildnumber' shall create BUILD_DIR for us
         tmpFile = BUILD_DIR + '~' + mainOutputName + '.tmp';
-        bundle('src/pdf.js', tmpFile, 'src/', mainFiles,  mainAMDName,
+        bundle('src/pdf.js', tmpFile, 'src/', mainFiles, mainAMDName,
           defines, true, versionJSON);
         this.push(new gutil.File({
           cwd: '',
@@ -529,12 +529,12 @@ gulp.task('lint', function (done) {
   console.log();
   console.log('### Linting JS files');
 
-  // Lint the Firefox specific *.jsm files.
-  var options = ['node_modules/jshint/bin/jshint', '--extra-ext', '.jsm', '.'];
-  var jshintProcess = spawn('node', options, {stdio: 'inherit'});
-  jshintProcess.on('close', function (code) {
+  // Ensure that we lint the Firefox specific *.jsm files too.
+  var options = ['node_modules/eslint/bin/eslint', '--ext', '.js,.jsm', '.'];
+  var esLintProcess = spawn('node', options, {stdio: 'inherit'});
+  esLintProcess.on('close', function (code) {
     if (code !== 0) {
-      done(new Error('jshint failed.'));
+      done(new Error('ESLint failed.'));
       return;
     }
 

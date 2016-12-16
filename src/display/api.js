@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 /* globals pdfjsFilePath, pdfjsVersion, pdfjsBuild, requirejs, pdfjsLibs,
-           WeakMap */
+           __webpack_require__ */
 
 'use strict';
 
@@ -1314,7 +1314,7 @@ var PDFWorker = (function PDFWorkerClosure() {
             }
             try {
               sendTest();
-            } catch (e)  {
+            } catch (e) {
               // We need fallback to a faked worker.
               this._setupFakeWorker();
             }

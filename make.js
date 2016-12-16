@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* jshint node:true */
-/* globals cat, cd, cp, echo, env, exec, exit, find, ls, mkdir, mv, process, rm,
-           sed, target, test */
+/* eslint-env node, shelljs */
 
 'use strict';
 
@@ -883,7 +881,7 @@ target.chromium = function() {
         'extensions/chromium/*.html',
         'extensions/chromium/*.js',
         'extensions/chromium/*.css',
-        'extensions/chromium/icon*.png',],
+        'extensions/chromium/icon*.png'],
        CHROME_BUILD_DIR],
       ['extensions/chromium/pageAction/*.*', CHROME_BUILD_DIR + '/pageAction'],
       ['extensions/chromium/options/*.*', CHROME_BUILD_DIR + '/options'],
