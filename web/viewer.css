@@ -912,6 +912,15 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
 .secondaryToolbarButton.download::before {
   content: url(images/toolbarButton-download.png);
 }
+.toolbarButton.singlePageMode::before,
+.secondaryToolbarButton.singlePageMode::before {
+  content: url(images/toolbarButton-singlePageMode.png);
+}
+
+.toolbarButton.multiPageMode::before,
+.secondaryToolbarButton.multiPageMode::before {
+  content: url(images/toolbarButton-multiPageMode.png);
+}
 
 .toolbarButton.bookmark,
 .secondaryToolbarButton.bookmark {
@@ -1666,6 +1675,16 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
   .toolbarButton.download::before,
   .secondaryToolbarButton.download::before {
     content: url(images/toolbarButton-download@2x.png);
+  }
+
+  .toolbarButton.singlePageMode::before,
+  .secondaryToolbarButton.singlePageMode::before {
+    content: url(images/toolbarButton-singlePageMode@2x.png);
+  }
+
+  .toolbarButton.multiPageMode::before,
+  .secondaryToolbarButton.multiPageMode::before {
+    content: url(images/toolbarButton-multiPageMode@2x.png);
   }
 
   .toolbarButton.bookmark::before,

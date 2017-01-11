@@ -53,6 +53,10 @@ See https://github.com/adobe-type-tools/cmap-resources
 <!--#endif-->
 
 <!--#if !PRODUCTION-->
+  <script src="../node_modules/requirejs/require.js"></script>
+<!--#endif-->
+
+<!--#if !PRODUCTION-->
     <script src="../src/shared/util.js"></script>
     <script src="../src/display/api.js"></script>
     <script src="../src/display/metadata.js"></script>
@@ -94,6 +98,7 @@ See https://github.com/adobe-type-tools/cmap-resources
     <script src="overlay_manager.js"></script>
     <script src="password_prompt.js"></script>
     <script src="pdf_document_properties.js"></script>
+    <script src="multi_page_view.js"></script>
 <!--#endif-->
 
 <!--#if !MINIFIED -->
@@ -198,6 +203,12 @@ See https://github.com/adobe-type-tools/cmap-resources
             <button id="toggleHandTool" class="secondaryToolbarButton handTool" title="Enable hand tool" tabindex="60" data-l10n-id="hand_tool_enable">
               <span data-l10n-id="hand_tool_enable_label">Enable hand tool</span>
             </button>
+            <button id="onePageView" class="secondaryToolbarButton singlePageMode" title="One page view" tabindex="61" data-l10n-id="one_page_view">
+              <span data-l10n-id="one_page_view_label">One page view</span>
+            </button>
+            <button id="multiPageView" class="secondaryToolbarButton multiPageMode" title="Multi page view" tabindex="62" data-l10n-id="multi_page_view">
+              <span data-l10n-id="multi_page_view_label">Multi page view</span>
+            </button>
 
             <div class="horizontalToolbarSeparator"></div>
 
@@ -230,6 +241,13 @@ See https://github.com/adobe-type-tools/cmap-resources
                 <label id="pageNumberLabel" class="toolbarLabel" for="pageNumber" data-l10n-id="page_label">Page: </label>
                 <input type="number" id="pageNumber" class="toolbarField pageNumber" value="1" size="4" min="1" tabindex="15">
                 <span id="numPages" class="toolbarLabel"></span>
+                <button id="onePageViewMenu" class="toolbarButton singlePageMode" title="One page view" tabindex="61" data-l10n-id="one_page_view">
+                  <span data-l10n-id="one_page_view_label">One page view</span>
+                </button>
+                <button id="multiPageViewMenu" class="toolbarButton multiPageMode" title="Multi page view" tabindex="62" data-l10n-id="multi_page_view">
+                  <span data-l10n-id="multi_page_view_label">Multi page view</span>
+                </button>
+
               </div>
               <div id="toolbarViewerRight">
                 <button id="presentationMode" class="toolbarButton presentationMode hiddenLargeView" title="Switch to Presentation Mode" tabindex="31" data-l10n-id="presentation_mode">

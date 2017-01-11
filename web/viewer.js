@@ -84,6 +84,7 @@ var mozL10n = document.mozL10n || document.webL10n;
 //#include pdf_thumbnail_viewer.js
 //#include pdf_outline_view.js
 //#include pdf_attachment_view.js
+//#include multi_page_view.js
 
 var PDFViewerApplication = {
   initialBookmark: document.location.hash.substring(1),
@@ -203,7 +204,7 @@ var PDFViewerApplication = {
       toolbar: document.getElementById('secondaryToolbar'),
       toggleButton: document.getElementById('secondaryToolbarToggle'),
       presentationModeButton:
-        document.getElementById('secondaryPresentationMode'),
+      document.getElementById('secondaryPresentationMode'),
       openFile: document.getElementById('secondaryOpenFile'),
       print: document.getElementById('secondaryPrint'),
       download: document.getElementById('secondaryDownload'),
@@ -212,7 +213,11 @@ var PDFViewerApplication = {
       lastPage: document.getElementById('lastPage'),
       pageRotateCw: document.getElementById('pageRotateCw'),
       pageRotateCcw: document.getElementById('pageRotateCcw'),
-      documentPropertiesButton: document.getElementById('documentProperties')
+      documentPropertiesButton: document.getElementById('documentProperties'),
+      onePageViewButton: document.getElementById('onePageView'),
+      multiPageViewButton: document.getElementById('multiPageView'),
+      onePageViewButtonMenu: document.getElementById('onePageViewMenu'),
+      multiPageViewButtonMenu: document.getElementById('multiPageViewMenu'),
     });
 
     if (this.supportsFullscreen) {
@@ -230,10 +235,20 @@ var PDFViewerApplication = {
           { element: document.getElementById('contextPageRotateCw'),
             handler: toolbar.pageRotateCwClick.bind(toolbar) },
           { element: document.getElementById('contextPageRotateCcw'),
-            handler: toolbar.pageRotateCcwClick.bind(toolbar) }
+            handler: toolbar.pageRotateCcwClick.bind(toolbar) },
+          { element: document.getElementById('onePageViewMenu'),
+            handler: toolbar.onePageViewClick.bind(toolbar) },
+          { element: document.getElementById('multiPageViewMenu'),
+            handler: toolbar.multiPageViewclick.bind(toolbar) }
         ]
       });
     }
+
+    this.multiPageView = new MultiPageView({
+        container: container,
+        viewer: viewer,
+        toolbar: toolbar
+    });
 
     PasswordPrompt.initialize({
       overlayName: 'passwordOverlay',
@@ -296,6 +311,13 @@ var PDFViewerApplication = {
         }
         PDFJS.externalLinkTarget = value;
       }),
+      Preferences.get('multipage').then(function resolve(value) {
+        if (value === true) {
+          PDFViewerApplication.multiPageView.multiPageView();
+        } else {
+          PDFViewerApplication.multiPageView.onePageView();
+        }
+      })
       // TODO move more preferences and other async stuff here
     ]).catch(function (reason) { });
 
@@ -636,6 +658,20 @@ var PDFViewerApplication = {
       PDFViewerApplication.pdfDocumentProperties.setFileSize(args.length);
     }
     return result;
+  },
+
+onePage: function webViewerOnePageView() {
+    PDFViewerApplication.multiPageView.onePageView();
+    Preferences.set('multipage', false);
+    PDFViewerApplication.pdfViewer.currentScaleValue = "page-fit";
+    PDFViewerApplication.pdfViewer.update();
+  },
+
+  multiPage: function webViewerMultiPageView() {
+    PDFViewerApplication.multiPageView.multiPageView();
+    Preferences.set('multipage', true);
+    PDFViewerApplication.pdfViewer.currentScaleValue = "page-fit";
+    PDFViewerApplication.pdfViewer.update();
   },
 
   download: function pdfViewDownload() {

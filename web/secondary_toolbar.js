@@ -39,6 +39,10 @@ var SecondaryToolbar = {
     this.pageRotateCw = options.pageRotateCw;
     this.pageRotateCcw = options.pageRotateCcw;
     this.documentPropertiesButton = options.documentPropertiesButton;
+    this.onePageViewButton = options.onePageViewButton;
+    this.multiPageViewButton = options.multiPageViewButton;
+    this.onePageViewButtonMenu = options.onePageViewButtonMenu;
+    this.multiPageViewButtonMenu = options.multiPageViewButtonMenu;
 
     // Attach the event listeners.
     var elements = [
@@ -57,7 +61,11 @@ var SecondaryToolbar = {
       { element: this.pageRotateCw, handler: this.pageRotateCwClick },
       { element: this.pageRotateCcw, handler: this.pageRotateCcwClick },
       { element: this.documentPropertiesButton,
-        handler: this.documentPropertiesClick }
+        handler: this.documentPropertiesClick },
+      { element: this.onePageViewButton, handler: this.onePageViewClick },
+      { element: this.multiPageViewButton, handler: this.multiPageViewclick },
+      { element: this.onePageViewButtonMenu, handler: this.onePageViewClick },
+      { element: this.multiPageViewButtonMenu, handler: this.multiPageViewclick },
     ];
 
     for (var item in elements) {
@@ -71,6 +79,16 @@ var SecondaryToolbar = {
   // Event handling functions.
   presentationModeClick: function secondaryToolbarPresentationModeClick(evt) {
     PDFViewerApplication.requestPresentationMode();
+    this.close();
+  },
+
+  onePageViewClick : function secondaryToolbarOnePageViewClick(evt){
+    PDFViewerApplication.onePage();
+    this.close();
+  },
+
+  multiPageViewclick : function secondaryToolbarMultiPageViewClick(evt){
+    PDFViewerApplication.multiPage();
     this.close();
   },
 
