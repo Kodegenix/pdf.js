@@ -247,7 +247,7 @@ var PDFViewerApplication = {
     this.multiPageView = new MultiPageView({
         container: container,
         viewer: viewer,
-        toolbar: toolbar
+        toolbar: SecondaryToolbar
     });
 
     PasswordPrompt.initialize({
